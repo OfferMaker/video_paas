@@ -8,6 +8,7 @@ spec:
       image: registry.cn-hangzhou.aliyuncs.com/offersmaker/video_stream:latest
       command: ["/bin/sh","-ce","sleep 3600"]
       ports:
-        - containerPort : 9000
+        - containerPort: 9000
+          protocol: TCP
   imagePullSecrets:
     - name: offermaker
