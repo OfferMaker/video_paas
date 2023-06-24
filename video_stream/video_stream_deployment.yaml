@@ -1,16 +1,22 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: video-stream
+  name: video-stream-deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: videostream
-  containers:
-    - name: my-container
-      image: registry.cn-hangzhou.aliyuncs.com/offersmaker/video_stream:latest
-      ports:
-        - containerPort: 9000
-          protocol: TCP
-  imagePullSecrets:
-    - name: offermaker
+      app: video-stream
+  template:
+    metadata:
+      labels:
+        app: video-stream
+    spec:
+      containers:
+        - name: video-stream-container
+          image: registry.cn-hangzhou.aliyuncs.com/offersmaker/video_stream:latest
+          ports:
+            - containerPort: 9000
+              protocol: TCP
+      imagePullSecrets:
+        - name: offermaker
