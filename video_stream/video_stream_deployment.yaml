@@ -3,6 +3,9 @@ kind: Pod
 metadata:
   name: video-stream
 spec:
+  selector:
+    matchLabels:
+      app: videostream
   containers:
     - name: my-container
       image: registry.cn-hangzhou.aliyuncs.com/offersmaker/video_stream:latest
