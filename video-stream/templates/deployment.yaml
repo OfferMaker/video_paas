@@ -41,6 +41,8 @@ spec:
             httpGet:
               path: /stream/v1/ping
               port: http
+            initialDelaySeconds: 10  # 启动后等待 60 秒后开始进行首次健康检查
+            periodSeconds: 10        # 设置健康检查的间隔为 10 秒
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
